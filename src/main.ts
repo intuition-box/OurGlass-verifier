@@ -10,6 +10,11 @@ const byId = <T extends HTMLElement>(id: string): T => {
 const input = byId<HTMLTextAreaElement>('input')
 const out = byId<HTMLDivElement>('result')
 
+// Self-identity: show where the user actually is, so they can cross-check this
+// origin against the canonical CID published on GitHub. Lives on the verifier's
+// own (content-addressed) origin — a tampered OurGlass front cannot fake it.
+byId('origin').textContent = location.host + (location.pathname === '/' ? '' : location.pathname)
+
 byId('check').addEventListener('click', () => {
   out.innerHTML = input.value.trim() ? render(analyze(input.value)) : ''
 })

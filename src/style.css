@@ -101,3 +101,14 @@ pre {
   overflow-x: auto;
   margin: 6px 0 0;
 }
+
+footer {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: var(--faint);
+  font-size: 12px;
+  line-height: 1.6;
+}
+footer code { font-family: var(--mono); color: var(--dim); word-break: break-all; }
+a { color: var(--accent); }
