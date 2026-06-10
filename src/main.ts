@@ -18,6 +18,24 @@ byId('clear').addEventListener('click', () => {
   out.innerHTML = ''
 })
 
+// Deep-link prefill: a delegation passed in the URL fragment (#d=base64url).
+// The fragment is never sent to the gateway server — it is read here, locally.
+function fromBase64Url(s: string): string {
+  const b64 = s.replace(/-/g, '+').replace(/_/g, '/')
+  const bytes = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0))
+  return new TextDecoder().decode(bytes)
+}
+
+const prefill = new URLSearchParams(location.hash.slice(1)).get('d')
+if (prefill) {
+  try {
+    input.value = fromBase64Url(prefill)
+    out.innerHTML = render(analyze(input.value))
+  } catch {
+    /* malformed link — leave the box empty for manual paste */
+  }
+}
+
 function esc(s: string): string {
   const map: Record<string, string> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }
   return s.replace(/[&<>"']/g, (c) => map[c])
