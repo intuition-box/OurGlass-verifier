@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OurGlass — independent delegation verifier</title>
+    <meta name="description" content="Decode and verify an OurGlass subscription delegation locally. No app, no server, no wallet." />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Independent verifier</h1>
+        <p class="lead">
+          Decode any OurGlass subscription locally and confirm what it actually authorizes — the cap, the token,
+          the delegate — and that every enforcer is one of MetaMask's audited contracts.
+        </p>
+        <p class="why">
+          This tool is deliberately separate from the OurGlass app: a different repository, hosted independently
+          (IPFS), with the audited addresses hard-coded inside it. It calls no server and runs entirely in your
+          browser, so a tampered OurGlass front-end cannot tamper with this check too.
+        </p>
+      </header>
+
+      <section>
+        <label for="input">Paste a subscription record (Copy JSON) or an agreement document</label>
+        <textarea id="input" spellcheck="false" placeholder='{ "delegation": { … }, "meta": { … } }'></textarea>
+        <div class="actions">
+          <button id="check" class="primary">Check</button>
+          <button id="clear">Clear</button>
+        </div>
+        <div id="result"></div>
+      </section>
+
+      <footer>
+        <p>
+          Cross-check the hard-coded addresses against MetaMask's official
+          <a href="https://github.com/MetaMask/delegation-framework/blob/main/documents/Deployments.md" target="_blank" rel="noreferrer">Deployments.md</a>.
+          Source is public and auditable; this build is content-addressed on IPFS, so its hash is its identity.
+        </p>
+      </footer>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

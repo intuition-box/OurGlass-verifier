@@ -1,0 +1,19 @@
+{
+  "name": "ourglass-verifier",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Independent, offline-capable verifier for OurGlass subscription delegations.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "viem": "^2.45.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vite": "^6.0.7"
+  }
+}
