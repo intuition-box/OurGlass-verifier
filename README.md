@@ -64,7 +64,28 @@ bun run build               # static build in dist/
 PINATA_JWT=... bun run pin  # build + pin dist/ to IPFS, prints the CID
 ```
 
-`bun run pin` uploads the static build to IPFS via Pinata and prints the CID +
-gateway URL. No server to run. Put that URL in OurGlass's `VITE_VERIFIER_URL`,
-and publish the CID somewhere outside OurGlass (this repo, docs) so users can
-recognize the canonical verifier.
+`bun run pin` uploads the static build to IPFS via Pinata and prints the CID,
+the IPFS URL, and the value to set as an ENS content hash. No server to run.
+
+## Canonical entry point (ENS)
+
+The verifier's stable address is an **ENS name** whose content hash points to the
+current build's CID — e.g. `ourglass-verify.eth`, reachable at
+`https://ourglass-verify.eth.limo/`.
+
+Why ENS rather than a DNSLink/domain: control of an ENS name lives in an
+Ethereum key, **separate** from the web hosting/DNS that a front-end attacker
+might compromise. So the canonical pointer can't be repointed by whoever hacks
+the hosting — only by the key holder.
+
+This name is the reference users should know (published here, in docs — never
+only inside the OurGlass app, which is the thing being verified). Point OurGlass's
+`VITE_VERIFIER_URL` at `https://<name>.eth.limo/`; it then stays stable forever.
+
+On each new build: `bun run pin`, then update the ENS name's content hash to the
+new `ipfs://<CID>`. OurGlass needs no change.
+
+**Current build CID:** `bafybeiaqtihw7t77vgx6s2q53uolr2v75ojvumhzae4dqa366ht2uyp2cm`
+(`https://bafybeiaqtihw7t77vgx6s2q53uolr2v75ojvumhzae4dqa366ht2uyp2cm.ipfs.dweb.link/`)
+
+**Canonical ENS:** _to be set after registration._

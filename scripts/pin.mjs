@@ -64,7 +64,10 @@ if (!res.ok) {
 }
 
 const { IpfsHash } = await res.json()
-console.log(`\nCID: ${IpfsHash}`)
-console.log(`Gateway: https://gateway.pinata.cloud/ipfs/${IpfsHash}/`)
-console.log(`Native:  ipfs://${IpfsHash}/`)
-console.log(`\nIn OurGlass set:\n  VITE_VERIFIER_URL=https://gateway.pinata.cloud/ipfs/${IpfsHash}`)
+console.log(`\nCID:  ${IpfsHash}`)
+console.log(`IPFS: https://${IpfsHash}.ipfs.dweb.link/`)
+console.log(`\nENS — paste this as the name's content hash (app.ens.domains):`)
+console.log(`  ipfs://${IpfsHash}`)
+console.log(`\nVITE_VERIFIER_URL (OurGlass):`)
+console.log(`  with ENS (stable, recommended):  https://<your-name>.eth.limo/`)
+console.log(`  without ENS (changes each pin):  https://${IpfsHash}.ipfs.dweb.link/`)
