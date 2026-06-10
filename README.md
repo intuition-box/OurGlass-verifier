@@ -58,9 +58,13 @@ list: <https://github.com/MetaMask/delegation-framework/blob/main/documents/Depl
 ## Run / build
 
 ```bash
-bun install      # or npm install
-bun run dev      # local dev server
-bun run build    # static build in dist/, ready to pin to IPFS
+bun install                 # or npm install
+bun run dev                 # local dev server
+bun run build               # static build in dist/
+PINATA_JWT=... bun run pin  # build + pin dist/ to IPFS, prints the CID
 ```
 
-To pin: `ipfs add -r dist/` (or via a pinning service), then publish the CID.
+`bun run pin` uploads the static build to IPFS via Pinata and prints the CID +
+gateway URL. No server to run. Put that URL in OurGlass's `VITE_VERIFIER_URL`,
+and publish the CID somewhere outside OurGlass (this repo, docs) so users can
+recognize the canonical verifier.
