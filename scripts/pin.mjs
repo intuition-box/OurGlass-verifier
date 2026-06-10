@@ -40,13 +40,14 @@ if (files.length === 0) {
   process.exit(1)
 }
 
-// Append each file under its dist-relative path. Pinata wraps the set in a
-// directory and returns that directory's CID, so index.html sits at the root
-// (/ipfs/<cid>/index.html) and the relative asset paths resolve.
+// Pinata requires the files to share a common root folder; it then returns that
+// folder's CID, so index.html sits at the root (/ipfs/<cid>/index.html) and the
+// relative asset paths resolve.
+const ROOT = 'ourglass-verifier'
 const form = new FormData()
 for (const abs of files) {
   const rel = relative(DIST, abs).split(sep).join('/')
-  form.append('file', new Blob([await readFile(abs)]), rel)
+  form.append('file', new Blob([await readFile(abs)]), `${ROOT}/${rel}`)
 }
 form.append('pinataMetadata', JSON.stringify({ name: 'ourglass-verifier' }))
 form.append('pinataOptions', JSON.stringify({ cidVersion: 1 }))
