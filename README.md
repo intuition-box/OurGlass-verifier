@@ -70,8 +70,8 @@ the IPFS URL, and the value to set as an ENS content hash. No server to run.
 ## Canonical entry point (ENS)
 
 The verifier's stable address is an **ENS name** whose content hash points to the
-current build's CID — e.g. `ourglass-verify.eth`, reachable at
-`https://ourglass-verify.eth.limo/`.
+current build's CID — `verify.ourglass.eth` (a free subname of the `ourglass.eth`
+brand), reachable at `https://verify.ourglass.eth.limo/`.
 
 Why ENS rather than a DNSLink/domain: control of an ENS name lives in an
 Ethereum key, **separate** from the web hosting/DNS that a front-end attacker
@@ -88,4 +88,5 @@ new `ipfs://<CID>`. OurGlass needs no change.
 **Current build CID:** `bafybeiaqtihw7t77vgx6s2q53uolr2v75ojvumhzae4dqa366ht2uyp2cm`
 (`https://bafybeiaqtihw7t77vgx6s2q53uolr2v75ojvumhzae4dqa366ht2uyp2cm.ipfs.dweb.link/`)
 
-**Canonical ENS:** _to be set after registration._
+**Canonical ENS:** `verify.ourglass.eth` → `https://verify.ourglass.eth.limo/`
+_(pending registration of `ourglass.eth` + content hash on the `verify` subname)._
