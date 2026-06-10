@@ -43,7 +43,6 @@ function render(result: VerifyResult): string {
 function renderAgreement(r: AgreementReport): string {
   return `<div class="panel">
     ${verdict(r.hashConsistent, r.hashConsistent ? 'Agreement hash is self-consistent' : 'Hash MISMATCH — do not trust this agreement')}
-    <p class="note">This hash is the <b>salt</b> your signature commits to. Confirm it matches the salt shown in your wallet at signing.</p>
     ${field('Computed', r.computedHash)}
     ${field('Declared', r.declaredHash)}
     <div class="k" style="margin-top:14px">Terms</div>

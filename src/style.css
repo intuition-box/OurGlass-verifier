@@ -25,13 +25,9 @@ body {
 
 main { max-width: 720px; margin: 0 auto; padding: 48px 20px 96px; }
 
-h1 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 12px; }
-.lead { color: var(--dim); font-size: 15px; margin: 0 0 12px; }
-.why { color: var(--faint); font-size: 13px; margin: 0 0 8px; border-left: 2px solid var(--line2); padding-left: 12px; }
+h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 24px; }
 
-section { margin-top: 32px; }
-
-label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+label { display: block; font-size: 13px; font-weight: 600; color: var(--dim); margin-bottom: 8px; }
 
 textarea {
   width: 100%;
@@ -79,8 +75,6 @@ button.primary { background: var(--accent); color: #06121a; border-color: transp
 .verdict.bad { color: var(--bad); }
 .verdict b { font-weight: 700; letter-spacing: 0.03em; }
 
-.note { color: var(--dim); font-size: 13px; margin: 4px 0 12px; }
-
 .field { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--line); }
 .field:last-child { border-bottom: 0; }
 .field .k { color: var(--faint); font-size: 12px; flex-shrink: 0; }
@@ -107,7 +101,3 @@ pre {
   overflow-x: auto;
   margin: 6px 0 0;
 }
-
-footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); }
-footer p { color: var(--faint); font-size: 12px; }
-a { color: var(--accent); }
